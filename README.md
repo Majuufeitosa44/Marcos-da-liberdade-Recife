@@ -10,16 +10,6 @@ Versão de teste: **Marcos da Liberdade**.
 - `index.html` — o mapa completo, num arquivo só (dados embutidos).
 - `dados_tracado_santo-antonio_sao-jose.geojson` — recorte do traçado oficial usado no mapa.
 
-## Publicar no GitHub Pages
-
-1. Crie um repositório público no GitHub (ex.: `toponimia-recife`).
-2. Envie os arquivos desta pasta (botão **Add file › Upload files**), incluindo o `.nojekyll`.
-3. Em **Settings › Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`, e salve.
-4. Em um ou dois minutos o mapa estará em `https://<usuario>.github.io/toponimia-recife/`.
-
-Para atualizar as fichas: abra o mapa, use **Filtrar › Dados › Carregar planilha** para conferir,
-e peça a atualização do `index.html` com a nova versão da planilha embutida.
-
 ## Fontes e licenças
 
 - Limites de bairros, cadastro e traçado de logradouros: Prefeitura do Recife, Portal de Dados Abertos (ODbL).
