@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Quem dá nome às ruas · Santo Antônio e São José, Recife</title>
+<title>Marcos da Liberdade · Santo Antônio e São José, Recife</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -199,16 +199,59 @@ h1 .titulo-btn:focus-visible{outline:2px solid var(--data);outline-offset:2px}
 .nota-inicio{font-size:.82rem;color:var(--suave);margin-top:16px}
 .moraram.mem{border-left-color:var(--memoria)}
 .historia .notas li{margin:6px 0}
+
+/* abertura */
+.abertura{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(12,20,36,.72);overflow-y:auto}
+.abertura[hidden]{display:none}
+.abertura .cartao{background:var(--painel);color:var(--tinta);max-width:580px;width:100%;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.35);overflow:hidden;margin:auto}
+.abertura .capa{background:var(--placa);color:var(--placa-txt);padding:6px}
+.abertura .capa-in{border:2px solid rgba(255,255,255,.9);border-radius:6px;padding:22px 20px 20px;text-align:center}
+.abertura .kicker{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.abertura h2{font-family:var(--serif);font-weight:800;font-size:2.3rem;line-height:1.05;margin:6px 0 6px}
+.abertura .sub{font-family:var(--serif);font-style:italic;font-size:1.05rem;opacity:.95}
+.abertura .corpo{padding:18px 22px 22px}
+.abertura .corpo p{margin:0 0 12px;line-height:1.55}
+.abertura .temas-ab{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0;list-style:none}
+.abertura .temas-ab li{font-size:.85rem;border:1px solid var(--linha);border-radius:999px;padding:2px 10px}
+.aviso-prelim{border-left:4px solid var(--oficio);background:var(--realce);border-radius:0 6px 6px 0;padding:10px 12px;margin:4px 0 16px;font-size:.92rem}
+.aviso-prelim b{display:block;font-family:var(--serif);font-size:1rem;margin-bottom:2px}
+.abertura .entrar{font:inherit;font-weight:700;font-size:1rem;background:var(--placa);color:var(--placa-txt);border:0;border-radius:999px;padding:10px 22px;cursor:pointer}
+.abertura .rodape-ab{font-size:.8rem;color:var(--suave);margin-top:14px}
+@media (max-width:480px){.abertura h2{font-size:1.85rem}.abertura .corpo{padding:16px}}
+/* cabeçalho */
+.subtitulo{font-family:var(--serif);font-style:italic;color:var(--suave);font-size:.95rem;margin:-8px 0 10px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.selo-prelim{font-family:var(--sans);font-style:normal;font-size:.75rem;font-weight:700;border:1.5px solid var(--oficio);color:var(--tinta);border-radius:999px;padding:1px 9px;background:transparent;cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
+<div class="abertura" id="abertura" role="dialog" aria-modal="true" aria-labelledby="abertura-titulo">
+  <div class="cartao">
+    <div class="capa"><div class="capa-in">
+      <div class="kicker">Santo Antônio e São José · Recife</div>
+      <h2 id="abertura-titulo">Marcos da Liberdade</h2>
+      <div class="sub">Quem dá nome às ruas, quem viveu nelas e o que a cidade guarda</div>
+    </div></div>
+    <div class="corpo">
+      <p>Um mapa interativo sobre a história dos bairros de Santo Antônio e São José, no centro do Recife. Ele reúne a origem dos nomes das ruas, a memória de africanas, africanos e seus descendentes, libertos e escravizados, que viveram e trabalharam ali, o patrimônio imaterial e os bens protegidos dos dois bairros.</p>
+      <ul class="temas-ab"><li>Ruas</li><li>Personagens e imaterial</li><li>Marcos</li></ul>
+      <p>O projeto é o par recifense do mapa de toponímia de Nantes Métropole, dentro da cooperação Recife–Nantes (ARIES / AFD – FICOL 2, GT4).</p>
+      <div class="aviso-prelim" role="note">
+        <b>Produto preliminar</b>
+        Esta é uma versão em construção. Parte das informações ainda está em pesquisa e checagem; o que aparece como “a confirmar” depende de conferência em fonte oficial. Correções e contribuições são bem-vindas.
+      </div>
+      <button class="entrar" id="entrar">Entrar no mapa</button>
+      <p class="rodape-ab">Fontes indicadas em cada ficha. Mapa de fundo © colaboradores do OpenStreetMap; limites, cadastro e traçado: Prefeitura do Recife.</p>
+    </div>
+  </div>
+</div>
 <div class="app">
-  <div id="mapa" role="region" aria-label="Mapa dos logradouros e marcos"></div>
+  <div id="mapa" role="region" aria-label="Mapa Marcos da Liberdade"></div>
   <aside id="painel">
     <div id="vista-principal">
       <div class="topo">
-        <h1><button class="titulo-btn" id="inicio" title="Voltar ao início">Quem dá nome às ruas de Santo Antônio e São José</button></h1>
+        <h1><button class="titulo-btn" id="inicio" title="Voltar ao início">Marcos da Liberdade</button></h1>
+        <div class="subtitulo">Quem dá nome às ruas de Santo Antônio e São José <button class="selo-prelim" id="abrir-sobre" title="Sobre o projeto">versão preliminar</button></div>
         <div class="abas" role="tablist">
           <button class="aba" role="tab" id="aba-ruas" aria-selected="false" aria-controls="painel-ruas">Ruas</button>
           <button class="aba" role="tab" id="aba-memoria" aria-selected="false" aria-controls="painel-memoria">Personagens e imaterial</button>
@@ -224,7 +267,7 @@ h1 .titulo-btn:focus-visible{outline:2px solid var(--data);outline-offset:2px}
           <li><button class="tema" data-tema="memoria"><span class="ic mem"><i></i></span><span><b>Personagens e imaterial</b><span class="d" id="d-memoria">Africanos, libertos e escravizados dos séculos XVIII e XIX; frevo, maracatu e outras celebrações.</span></span></button></li>
           <li><button class="tema" data-tema="marcos"><span class="ic marcos"><i></i></span><span><b>Marcos</b><span class="d" id="d-marcos">Bens tombados pelo IPHAN e pela FUNDARPE, proteção municipal e lugares afetivos.</span></span></button></li>
         </ul>
-        <p class="nota-inicio">Clique no título para voltar a esta tela.</p>
+        <p class="nota-inicio">Clique no título para voltar a esta tela. <button class="link" id="abrir-sobre-2">Sobre o projeto</button></p>
       </section>
 
       <section id="painel-ruas" role="tabpanel" aria-labelledby="aba-ruas" hidden>
@@ -1007,6 +1050,16 @@ function voltarInicio(){
   mapa.fitBounds(limitesBounds(),{padding:[20,20]});
 }
 $("inicio").onclick = voltarInicio;
+/* Abertura: aparece ao carregar e pelo selo "versão preliminar" */
+let focoAntes = null;
+function abrirAbertura(){ focoAntes = document.activeElement; $("abertura").hidden = false; $("entrar").focus(); }
+function fecharAbertura(){ $("abertura").hidden = true; if(focoAntes && focoAntes.focus) focoAntes.focus(); }
+$("entrar").onclick = fecharAbertura;
+$("abertura").addEventListener("click", e=>{ if(e.target.id==="abertura") fecharAbertura(); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !$("abertura").hidden) fecharAbertura(); });
+$("abrir-sobre").onclick = abrirAbertura;
+$("abrir-sobre-2").onclick = abrirAbertura;
+setTimeout(()=>$("entrar").focus(), 0);
 document.querySelectorAll(".tema[data-tema]").forEach(b=>b.onclick=()=>abrirAba(b.dataset.tema));
 function abrirSub(qual){
   ["lista","filtrar"].forEach(s=>$("sub-"+s).setAttribute("aria-pressed", s===qual));
